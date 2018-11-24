@@ -1,0 +1,5 @@
+//Criar arquivo package.json
+npm init -y
+
+//Instalar as dependencias do webpack e servidor embutido
+npm i --save-dev webpack@1.14.0 webpack-dev-server@1.16.2
