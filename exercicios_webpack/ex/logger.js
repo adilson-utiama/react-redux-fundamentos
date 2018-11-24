@@ -1,5 +1,8 @@
-function info(text) {
+//Padrao do ES2015
+export function info(text) {
       console.log(`INFO: ${text}`);
 }
 
-module.exports = { info }
+
+// usando padrao CommonJS
+// module.exports = { info }
