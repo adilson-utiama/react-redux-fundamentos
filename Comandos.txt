@@ -3,3 +3,15 @@ npm init -y
 
 //Instalar as dependencias do webpack e servidor embutido
 npm i --save-dev webpack@1.14.0 webpack-dev-server@1.16.2
+
+//Alternado o package.json com script para chamar o servidor do webpack
+...
+
+"scripts": {
+    "dev": "webpack-dev-server --progress --colors --inline --hot"
+},
+
+....
+
+//Para rodar 
+npm run dev
