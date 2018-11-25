@@ -22,3 +22,71 @@ npm run dev
 //babel-loader = interface entre o babel e o webpack
 //babel-preset-es2015 = preset para codigo do es2015 para compatibilidade com browser
 npm i --save-dev babel-core@6.22.1 babel-loader@6.2.10 babel-preset-es2015@6.22.0
+
+
+//Instalando dependencias do Babel-Plugin para rest operator
+npm i --save-dev babel-plugin-transform-object-rest-spread@6.22.0
+
+
+//Adicionando o React e preset do React
+npm i --save-dev react@15.4.2
+npm i --save-dev babel-preset-react@6.22.0
+
+**no webpack.config
+module: {
+	loaders: [{
+	test: /.js?$/,
+	loader: 'babel-loader',
+	exclude: /node_modules/,
+	query: {
+	presets: ['es2015', 'react'],
+	plugins: ['transform-object-rest-spread']
+	}
+	}]
+}
+
+//Adicionando loader para css
+
+**no webpack.config
+module.exports = {
+  entry: './ex/index.js',
+  output: {
+  path: __dirname + '/public',
+  filename: './bundle.js'
+},
+  devServer: {
+  port: 8080,
+  contentBase: './public'
+},
+  plugins: [
+     new ExtractTextPlugin('app.css')
+  ],
+  module: {
+  loaders: [{
+      test: /.js?$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      query: {
+      presets: ['es2015', 'react'],
+      plugins: ['transform-object-rest-spread']
+   }
+},
+  {
+   test: /\.css$/,
+   loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+  }]
+}
+}
+
+-> Instalando dependencias
+npm i --save-dev extract-text-webpack-plugin@1.0.1 style-loader@0.13.1 css-loader@0.26.1
+
+
+
+**** EXERCICIOS COM REACT ****
+
+//Instalar dependencias
+
+npm i --save-dev react@15.4.2 react-dom@15.4.2 babel-core@6.22.1 babel-loader@6.2.10 babel-preset-es2015@6.22.0 babel-preset-react@6.22.0 webpack@1.14.0 webpack-dev-server@1.16.2
+
+
