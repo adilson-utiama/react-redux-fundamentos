@@ -34,3 +34,6 @@ const novoProduto = clone(produto);
 novoProduto.nome = 'Caneta Bic Preta';
 
 console.log(novoProduto, produto);
+
+
+import './estilo.css';
