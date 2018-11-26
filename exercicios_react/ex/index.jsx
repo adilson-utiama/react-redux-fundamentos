@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Component from './component.jsx';
 
 ReactDOM.render(
-      <h1>Ola React!</h1>,
+      <Component />,
       document.getElementById('app')
 );
