@@ -1,5 +1,6 @@
 import React from 'react';
 
-export default function() {
-      return <h1>Primeiro Componente com React</h1>;
-}
+//Utilizando arrow function
+export default () => (  //<- expressao resolvida dentro de parenteses, return implicito
+      <h1>Primeiro Componente com React</h1>
+)
