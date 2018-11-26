@@ -1,6 +1,7 @@
 import React from 'react';
 
 //Utilizando arrow function
-export default () => (  //<- expressao resolvida dentro de parenteses, return implicito
-      <h1>Primeiro Componente com React</h1>
+//quando ha apenas um parametro, podemos retirar os parenteses
+export default props => (  //<- expressao resolvida dentro de parenteses, return implicito
+      <h1>{ props.value }</h1> //acessando a propriedade value
 )
