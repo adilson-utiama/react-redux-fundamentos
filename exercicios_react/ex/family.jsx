@@ -1,4 +1,5 @@
 import React from 'react';
+import { childrenWithProps } from '../utils/reactUtils';
 
 export default props => (
       //props.children, referente aos componente(s) filho(s) do componente
@@ -7,16 +8,9 @@ export default props => (
       //        ......
       //    </ComponentePai>
       // 
-      // React.cloneElement( ELEMENTO, PROPRIEDADE ), clona componente e passa propriedade 
-      //  Neste caso, so funciona se passar apenas um elemento
-      // { ...props } = usando spread operator, clonando props
-      //
-      // React.Children.map(elemento, expressao lambda) = semelhante a funcao map
-      // Nesta solucao, podemos passar varios elementos para o componente
-      // propagando as propriedades para os filhos atraves do map
+
       <div>
             <h2>Familia</h2>
-            { React.Children.map(props.children,
-                  child => React.cloneElement(child, { ...props })) }
+            { childrenWithProps(props.children, props) }
       </div>
 )
