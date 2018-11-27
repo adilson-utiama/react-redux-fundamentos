@@ -6,7 +6,13 @@ export default props => (
       //        <ComponenteFilho />
       //        ......
       //    </ComponentePai>
+      // 
+      // React.cloneElement( ELEMENTO, PROPRIEDADE ), clona componente e passa propriedade 
+      //  Neste caso, so funciona se passar apenas um elemento
+      // { ...props } = usando spread operator, clonando props
       <div>
-            {props.children} 
+            <h2>Familia</h2>
+            { props.children }
+            { React.cloneElement(props.children, { ...props} ) } 
       </div>
 )

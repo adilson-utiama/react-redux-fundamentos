@@ -7,9 +7,8 @@ import family from './family';
 ReactDOM.render(
       //Componentes (filho) dentro do Componente, como no html
       <div>
-            <Family>
-                  <Member name="Guilherme" lastName="Silva" />
-                  <Member name="Joao" lastName="Silva" />
+            <Family lastName="Silva">
+                  <Member name="Guilherme" />
             </Family>
       </div>,
       document.getElementById('app')
