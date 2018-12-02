@@ -116,3 +116,10 @@ npm i -save-dev bootstrap@3.3.7 font-awesome@4.7.0
 
 #React e Axios(Client http)
 npm install --save-dev react@15.4.2 react-dom@15.4.2 react-router@3.0.2 axios@0.15.3
+
+
+
+---TESTANDO BACKEND e FRONTEND (Integracao)
+
+-> http://localhost:8080  (Frontend)
+-> http://localhost:3003/api/todos  (Backend)
