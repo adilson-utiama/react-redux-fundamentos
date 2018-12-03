@@ -1,29 +1,50 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { changeValue } from './fieldActions'
 
-// Exemplo de Componente controlado pelo proprio componente e nao pelo DOM
-// Estado 'controlled', o componente tem total controle do input neste exemplo
-//  nao permite que o elemento seja controlado pelo DOM
-// Para deixar o estado como 'uncontrolled', passamos { value: 'undefined' }
-// e tiramos o 'onChange={}' do input
 class Field extends Component {
-      constructor(props) {
-            super(props)
-            this.state = { value: props.initialValue }
-            this.handleChange = this.handleChange.bind(this)
-      }
+     
+      // Em vez do 'state', usamos as 'props'
+      //
+      // constructor(props) {
+      //       super(props)
+      //       this.state = { value: props.initialValue }
+      //       this.handleChange = this.handleChange.bind(this)
+      // }
 
-      handleChange(event) {
-            this.setState( { value: event.target.value } )
-      }
+      // handleChange(event) {
+      //       this.setState( { value: event.target.value } )
+      // }
 
       render() {
             return (
                   <div>
-                        <label>{ this.state.value }</label><br />
-                        <input onChange={this.handleChange} value={ this.state.value }/>
+                        <label>{ this.props.value }</label><br />
+                        <input onChange={this.props.changeValue} value={ this.props.value }/>
                   </div>
             )
       }
 }
 
-export default Field
+//Mapea o 'state' para 'props'
+function mapStateToProps(state) {
+      return {
+            value: state.field.value
+      }
+}
+
+//Criamos o método mapDispatchToProps para converter a Action Creator 'changeValue'
+//que criamos no arquivo 'fieldActions.js' em uma prop para o componente. 
+//O método 'bindActionCreators' facilita este trabalho. 
+//o valor do state 'value' que foi alterado pelo input text é enviado à Store 
+//pelo método changeValue, que foi mapeado no componente como prop.
+//Por fim, passamos o método mapDispatchToProps como segundo parâmetro do método connect.
+function mapDispatchToProps(dispatch) {
+      return bindActionCreators( { changeValue }, dispatch )
+}
+
+// export default Field
+
+//A partir do metodo connect, este componente estara conectado ao Store
+export default connect(mapStateToProps, mapDispatchToProps)(Field)  //
