@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import Grid from '../template/grid'
 import IconButton from '../template/iconButton'
-import { changeDescription, search } from './todoActions'
+import { changeDescription, search, add } from './todoActions'
 
 class TodoForm extends Component {
       
@@ -14,8 +14,14 @@ class TodoForm extends Component {
       }
 
       keyHandler(e) {
+
+            //Destructure
+            //A sintaxe de atribuição via desestruturação (destructuring assignment) é uma expressão JavaScript
+            // que possibilita extrair dados de arrays ou objetos em variáveis distintas.
+            const { add, search, description } = this.props
+
             if (e.key === 'Enter') {
-                  e.shiftKey ? this.props.handleSearch() : this.props.handleAdd()
+                  e.shiftKey ? search() : add()
             } else if (e.key === 'Escape') {
                   this.props.handleClear()
             }
@@ -29,6 +35,10 @@ class TodoForm extends Component {
       }
 
       render() {
+
+            //Destructure
+            const { add, search, description } = this.props
+
             return (
 
                   <div role='form' className='todoForm'>
@@ -42,9 +52,9 @@ class TodoForm extends Component {
             
                         <Grid cols='12 3 2'> 
                               <IconButton style='primary' icon='plus'
-                                    onClick={ this.props.handleAdd } ></IconButton>
+                                    onClick={ () => add(description) } ></IconButton>
                               <IconButton style='info' icon='search'
-                                    onClick={ this.props.handleSearch }></IconButton>
+                                    onClick={ () => search() }></IconButton>
                               <IconButton style='default' icon='close'
                                     onClick={ this.props.handleClear }></IconButton>
                         </Grid>
@@ -55,6 +65,6 @@ class TodoForm extends Component {
 }
 
 const mapStateToProps = state => ( { description: state.todo.description } )
-const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription, search }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ changeDescription, search, add }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm)
