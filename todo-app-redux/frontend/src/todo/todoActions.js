@@ -45,7 +45,7 @@ export const add = (description) => {
 }
 
 
-//Nestes dois metodos o 'type' é desnecessario, pois no 'search' ja carrega o novo estado
+//Nestes metodos o 'type' é desnecessario, pois no 'search' ja carrega o novo estado
 export const markAsDone = (todo) => {
       return dispatch => {
             axios.put(`${URL}/${todo._id}`, { ...todo, done: true })
@@ -56,6 +56,13 @@ export const markAsDone = (todo) => {
 export const markAsPending = (todo) => {
       return dispatch => {
             axios.put(`${URL}/${todo._id}`, { ...todo, done: false })
+                  .then(resp => dispatch( search() ))
+      }
+}
+
+export const remove = (todo) => {
+      return dispatch => {
+            axios.delete(`${URL}/${todo._id}`)
                   .then(resp => dispatch( search() ))
       }
 }
