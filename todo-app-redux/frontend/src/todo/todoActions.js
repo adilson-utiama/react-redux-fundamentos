@@ -17,10 +17,29 @@ export const search = () => {
       }
 }
 
-export const add = (description => {
+/* export const add = (description => {
       const request = axios.post(URL, { description: description })
-      return {
-            type: 'TODO_ADDED',
-            payload: request
+
+      //Aqui o middleware 'multi' dispara 2 actions a partir deste
+      // sendo possivel siparar varias actions
+      // colocamos em uma array []
+
+      return [
+            { type: 'TODO_ADDED', payload: request },
+            search()
+      ]
+}) */
+
+//NOTA
+//O middleware Redux Thunk permite que você escreva 'Actions Creators' 
+//que retornam uma função ao invés de uma ação. 
+//A conversão pode ser usada para atrasar o envio de uma ação ou 
+//para despachar somente se uma determinada condição for atendida. 
+//A função interna recebe os métodos de armazenamento 'dispatch' e 'getState' como parâmetros.
+export const add = (description) => {
+      return dispatch => {
+            axios.post(URL, { description: description })
+                  .then(resp => dispatch( { type: 'TODO_ADDED', payload: resp.data } ))
+                  .then(resp => dispatch( search() ))
       }
-})
+}
