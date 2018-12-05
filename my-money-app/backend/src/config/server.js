@@ -11,3 +11,5 @@ server.use(bodyParser.json())
 server.listen(PORT, function() {
       console.log(`MY-MONEY-BACKEND is running on port ${PORT}`)
 })
+
+module.exports = server
