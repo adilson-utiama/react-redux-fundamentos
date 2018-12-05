@@ -144,3 +144,21 @@ pm2@2.1.5
 //Dev dependencias
 nodemon@1.11.0
 
+
+
+//Testando backend Restful com Postman
+
+[urlencoded]
+name: janeiro/18
+month: 11
+year: 2018
+credits[0][name]: Salario Empresa
+credits[0][value]: 5000
+credits[1][name]: Salario Professor
+credits[1][value]: 2500
+debits[0][name]: Conta Telefone
+debts[0][value]: 150
+debts[0][status]: PAGO
+debts[1][name]: Condominio
+debts[1][value]: 500
+debts[1][status]: PENDENTE
