@@ -188,3 +188,28 @@ BillingCycle.route('summary', (req, res, next) => {
       })
   })
 
+
+
+@Usando o Express-Query-Int
+Aula 99
+(Retirado da Node Restful referencia)
+Limitando o número e pulando itens
+
+Ao implementar a paginação, talvez você queira usar o recurso de 'skip' e 'limit'. Ambos fazem exatamente o que seu nome diz e apenas ignoram determinada quantidade de itens ou limitam a uma quantidade definida de itens.
+
+//Exemplo
+/users/?limit=5 will give you the first 5 items
+/users/?skip=5 will skip the first 5 and give you the rest
+/users/?limit=5&skip=5 will skip the first 5 and then give you the second 5
+
+OBS: Necessario utilizar o middleware 'express-query-int'
+para parsear o valor de 'limit' e 'skip' para um 'Inteiro'
+
+
+
+
+
+
+
+
+
