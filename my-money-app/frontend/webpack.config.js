@@ -15,7 +15,6 @@ module.exports = {
       },
       resolve: {
             extensions: ['', '.js', '.jsx'],
-            //Alias para caminhos de libs
             alias: {
                   modules: __dirname + '/node_modules',
                   jquery: 'modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js',
@@ -23,7 +22,7 @@ module.exports = {
             }
       },
       plugins: [
-            new webpack.ProviderPlugin({
+            new webpack.ProvidePlugin({
                   $: 'jquery',
                   jQuery: 'jquery',
                   'window.jQuery': 'jquery'
@@ -32,7 +31,7 @@ module.exports = {
       ],
       module: {
             loaders: [{ //Configuracoes para usar o babel
-                  test: /.js[x]$/,
+                  test: /.js[x]?$/,
                   loader: 'babel-loader',
                   exclude: /node_modules/,
                   query: {
