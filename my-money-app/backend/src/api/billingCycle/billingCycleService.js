@@ -1,8 +1,10 @@
 const BillingCycle = require('./billingCycle')
+const errorHandler = require('../common/errorHandler')
 
 //rotas de recursos geradas pelo node_restful 
 BillingCycle.methods(['get', 'post', 'put', 'delete'])
 BillingCycle.updateOptions({ new: true, runValidators: true })
+BillingCycle.after('post', errorHandler).after('put', errorHandler)
 
 //Rota ja automaticamente mapeada em 'routes.js'
 //Retorna a quantidade de registros

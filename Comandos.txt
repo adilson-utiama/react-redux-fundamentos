@@ -162,3 +162,29 @@ debts[0][status]: PAGO
 debts[1][name]: Condominio
 debts[1][value]: 500
 debts[1][status]: PENDENTE
+
+//CORRECAO da falha ao consumir rota 'summary'
+//Referente a Aula "Obtendo Sumario de Pagamentos"
+//Se estiver usando MongoDB acima da Versao 3.0 dara este erro
+//erro: The 'cursor' option is required, except for aggregate with the explain argument 
+
+//Procedimento
+//Pelo npm atualizar mongoose para 5.0.0
+
+em BillingCycleService, a funcao devera ficar assim
+
+//Rota para retornar sumario dos pagamentos
+BillingCycle.route('summary', (req, res, next) => {
+      BillingCycle.aggregate([
+            { $project: {credit: {$sum: "$credits.value"}, debt: {$sum: "$debts.value"}} }, 
+            { $group: {_id: null, credit: {$sum: "$credit"}, debt: {$sum: "$debt"}} }, 
+            { $project: {_id: 0, credit: 1, debt: 1} }
+      ]).exec((error, result) => {
+          if(error) {
+              res.status(500).json({errors: [error]})
+          } else {
+              res.json(result[0] || { credit: 0, debt: 0 })
+          }
+      })
+  })
+
