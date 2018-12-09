@@ -8,11 +8,15 @@ import BillingCycleReducer from '../billingCycle/billingCycleReducer'
 //então você só precisa passá-lo uma vez
 import { reducer as formReducer } from 'redux-form' 
 
+//Reducer do redux-toastr
+import { reducer as toastrReducer } from 'react-redux-toastr'
+
 const rootReducer = combineReducers({
       dashboard: DashboardReducer,
       tab: TabReducer,
       billingCycle: BillingCycleReducer,
-      form: formReducer
+      form: formReducer,
+      toastr: toastrReducer
 })
 
 export default rootReducer
