@@ -4,6 +4,8 @@ const BASE_URL = 'http://localhost:3003/api'
 import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 
+const INITIAL_VALUES = {}
+
 //Imprtando outras Actons Creators
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
@@ -23,10 +25,7 @@ export function create(values) {
                         toastr.success('Sucesso', 'Operação realizada com sucesso.')
                         //Passando varias actions para executar com redux-multi
                         dispatch([
-                              resetForm('billingCycleForm'), //reseta form (passando id do form)
-                              getList(),
-                              selectTab('tabList'),
-                              showTabs('tabList', 'tabCreate')
+                              init()
                         ])
                   })
                   .catch(e => {
@@ -44,5 +43,14 @@ export function showUpdate(billingCycle) {
             showTabs('tabUpdate'),
             selectTab('tabUpdate'),
             initialize('billingCycleForm', billingCycle)
+      ]
+}
+
+export function init() {
+      return [
+            showTabs('tabList', 'tabCreate'),
+            selectTab('tabList'),
+            getList(),
+            initialize('billingCycleForm', INITIAL_VALUES)
       ]
 }
