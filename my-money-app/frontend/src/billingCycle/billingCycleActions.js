@@ -10,7 +10,7 @@ export function getList() {
 }
 
 export function create(values) {
-      axios.put(`${BASE_URL}/billingCycle`, values)
+      axios.post(`${BASE_URL}/billingCycles`, values)
       return {
             type: 'TEMP'
       }
