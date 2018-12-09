@@ -37,3 +37,11 @@ export function create(values) {
       }
 
 }
+
+export function showUpdate(billingCycle) {
+      //redux-multi
+      return [
+            showTabs('tabUpdate'),
+            selectTab('tabUpdate')
+      ]
+}
