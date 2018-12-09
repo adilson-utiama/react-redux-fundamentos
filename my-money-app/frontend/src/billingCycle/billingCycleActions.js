@@ -2,7 +2,7 @@ import axios from 'axios'
 const BASE_URL = 'http://localhost:3003/api'
 
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm } from 'redux-form'
+import { reset as resetForm, initialize } from 'redux-form'
 
 //Imprtando outras Actons Creators
 import { showTabs, selectTab } from '../common/tab/tabActions'
@@ -42,6 +42,7 @@ export function showUpdate(billingCycle) {
       //redux-multi
       return [
             showTabs('tabUpdate'),
-            selectTab('tabUpdate')
+            selectTab('tabUpdate'),
+            initialize('billingCycleForm', billingCycle)
       ]
 }

@@ -36,4 +36,4 @@ class BillingCycleForm extends Component {
 //Ele fornecerá os adereços sobre o estado e a 
 //função do formulário para manipular o processo de envio.
 // em { form: ID_DO_FORM } 
-export default reduxForm({ form: 'billingCycleForm' })(BillingCycleForm)
+export default reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false })(BillingCycleForm)
