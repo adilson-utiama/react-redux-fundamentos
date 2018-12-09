@@ -16,10 +16,12 @@ export function getList() {
 }
 
 export function create(values) {
+      //'dispatch' provido pelo middleware redux-thunk
       return dispatch => {
             axios.post(`${BASE_URL}/billingCycles`, values)
                   .then(resp => {
                         toastr.success('Sucesso', 'Operação realizada com sucesso.')
+                        //Passando varias actions para executar com redux-multi
                         dispatch([
                               resetForm('billingCycleForm'), //id do form
                               getList(),
