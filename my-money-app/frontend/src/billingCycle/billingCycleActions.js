@@ -18,9 +18,19 @@ export function getList() {
 }
 
 export function create(values) {
+      return submit(values, 'post')
+}
+
+export function update(values) {
+      return submit(values, 'put')
+}
+
+function submit(values, method) {
+      const id = values._id ? values._id : ''
+
       //'dispatch' provido pelo middleware redux-thunk
       return dispatch => {
-            axios.post(`${BASE_URL}/billingCycles`, values)
+            axios[method](`${BASE_URL}/billingCycles/${ id }`, values)
                   .then(resp => {
                         toastr.success('Sucesso', 'Operação realizada com sucesso.')
                         //Passando varias actions para executar com redux-multi
@@ -34,7 +44,6 @@ export function create(values) {
                         })
                   })
       }
-
 }
 
 export function showUpdate(billingCycle) {
