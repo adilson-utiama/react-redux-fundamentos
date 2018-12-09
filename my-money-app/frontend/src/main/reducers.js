@@ -3,10 +3,16 @@ import DashboardReducer from '../dashboard/dashboardReducer'
 import TabReducer from '../common/tab/tabReducer'
 import BillingCycleReducer from '../billingCycle/billingCycleReducer'
 
+//precisamos passar o formReducer para sua 'store'. 
+//Ele serve para todos os seus componentes de formulário, 
+//então você só precisa passá-lo uma vez
+import { reducer as formReducer } from 'redux-form' 
+
 const rootReducer = combineReducers({
       dashboard: DashboardReducer,
       tab: TabReducer,
-      billingCycle: BillingCycleReducer
+      billingCycle: BillingCycleReducer,
+      form: formReducer
 })
 
 export default rootReducer
