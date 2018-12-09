@@ -23,7 +23,7 @@ export function create(values) {
                         toastr.success('Sucesso', 'Operação realizada com sucesso.')
                         //Passando varias actions para executar com redux-multi
                         dispatch([
-                              resetForm('billingCycleForm'), //id do form
+                              resetForm('billingCycleForm'), //reseta form (passando id do form)
                               getList(),
                               selectTab('tabList'),
                               showTabs('tabList', 'tabCreate')
