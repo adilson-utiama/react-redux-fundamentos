@@ -14,7 +14,7 @@ class BillingCycleForm extends Component {
 
             //destructure from this.props
             //propriedade 'credits' de billingCycle pelo 'init'
-            const { handleSubmit, readOnly, credits } = this.props
+            const { handleSubmit, readOnly, credits, debts } = this.props
 
             //O componente <Field /> conecta cada entrada à 'store'
             return (
@@ -32,6 +32,8 @@ class BillingCycleForm extends Component {
 
                               <ItemList cols='12 6' list={ credits } readOnly={ readOnly }
                                     field='credits' legend='Créditos' />
+                              <ItemList cols='12 6' list={ debts } readOnly={ readOnly }
+                                    field='debts' legend='Débitos' showStatus={ true } />
                         </div>
                         <div className='box-footer'>
                               <button type='submit' className={`btn btn-${ this.props.submitClass }`}>
@@ -58,6 +60,9 @@ BillingCycleForm = reduxForm({ form: idDoForm, destroyOnUnmount: false })(Billin
 
 const selector = formValueSelector(idDoForm)
 
-const mapStateToProps = state => ( { credits: selector( state, 'credits' ) } )
+const mapStateToProps = state => ( { 
+      credits: selector( state, 'credits' ),
+      debts: selector( state, 'debts' ) 
+} )
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)

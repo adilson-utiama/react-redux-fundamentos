@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3003/api'
 import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 
-const INITIAL_VALUES = { credits: [ {} ] }
+const INITIAL_VALUES = { credits: [ {} ], debts: [ {} ] }
 
 //Imprtando outras Actons Creators
 import { showTabs, selectTab } from '../common/tab/tabActions'
