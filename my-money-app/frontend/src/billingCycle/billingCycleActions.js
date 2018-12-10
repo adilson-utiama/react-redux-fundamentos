@@ -25,6 +25,10 @@ export function update(values) {
       return submit(values, 'put')
 }
 
+export function remove(values) {
+      return submit(values, 'delete')
+}
+
 function submit(values, method) {
       const id = values._id ? values._id : ''
 
@@ -51,6 +55,15 @@ export function showUpdate(billingCycle) {
       return [
             showTabs('tabUpdate'),
             selectTab('tabUpdate'),
+            initialize('billingCycleForm', billingCycle)
+      ]
+}
+
+export function showDelete(billingCycle) {
+      //redux-multi
+      return [
+            showTabs('tabDelete'),
+            selectTab('tabDelete'),
             initialize('billingCycleForm', billingCycle)
       ]
 }
