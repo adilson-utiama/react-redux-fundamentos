@@ -1,3 +1,6 @@
+//O objetivo principal do user.js e fazer o ODM (Mapeamento Objeto-Documento)
+//ou seja, mapear o objeto javascript 'user' para o documento que sera armazenado
+//no MongoDB
 const restful = require('node-restful')
 const mongoose = restful.mongoose
 
