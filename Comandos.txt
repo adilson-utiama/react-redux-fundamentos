@@ -227,3 +227,64 @@ npm i --save-dev admin-lte@2.3.6 font-awesome@4.7.0 ionicons@3.0.0 -E
 
 #React - Reedux - Axios - Lodash
 npm i --save-dev react@15.4.2 react-dom@15.4.2 react-router@3.0.2 redux@3.6.0 react-redux@4.4.6 redux-form@6.4.1 redux-multi@0.1.12 redux-promise@0.5.3 redux-thunk@2.1.0 react-redux-toastr@4.4.2 axios@0.15.3 lodash@4.17.4 -E
+
+
+##Aplicacao Final - Atualizando as Bibliotecas (Frontend)
+
+//Mantendo repositorio em outro branch
+git checkout -b update_react_16
+git push -u origin update_react_16
+
+//renomear a pasta em frontend em my-money-app para 'frontend-old'
+
+//Criar novo projeto com
+create-react-app frontend
+
+//Copiar arquivos da frontend-old em src pra o src da nova pasta
+//Codigo do package.json em 
+https://github.com/cod3rcursos/curso-react-redux/tree/update_react_16/my-money-app
+
+//Atualizar do backend e frontend
+
+##Mudanca no codigo 1
+<HashRouter>
+
+A <Router> that uses the hash portion of the URL (i.e. window.location.hash) to keep your UI in sync with the URL.
+
+IMPORTANT NOTE: Hash history does not support location.key or location.state. In previous versions we attempted to shim the behavior but there were edge-cases we couldn't solve. Any code or plugin that needs this behavior won't work. As this technique is only intended to support legacy browsers, we encourage you to configure your server to work with <BrowserHistory> instead.
+
+import { HashRouter } from 'react-router-dom'
+
+<HashRouter>
+  <App/>
+</HashRouter>
+
+basename: string
+
+The base URL for all locations. A properly formatted basename should have a leading slash, but no trailing slash.
+
+<HashRouter basename="/calendar"/>
+<Link to="/today"/> // renders <a href="#/calendar/today">
+
+getUserConfirmation: func
+
+A function to use to confirm navigation. Defaults to using window.confirm.
+
+// this is the default behavior
+const getConfirmation = (message, callback) => {
+  const allowTransition = window.confirm(message)
+  callback(allowTransition)
+}
+
+<HashRouter getUserConfirmation={getConfirmation}/>
+
+hashType: string
+
+The type of encoding to use for window.location.hash. Available values are:
+
+    "slash" - Creates hashes like #/ and #/sunshine/lollipops
+    "noslash" - Creates hashes like # and #sunshine/lollipops
+    "hashbang" - Creates "ajax crawlable" (deprecated by Google) hashes like #!/ and #!/sunshine/lollipops
+
+Defaults to "slash".
+children: node
