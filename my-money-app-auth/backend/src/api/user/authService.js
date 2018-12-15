@@ -5,12 +5,12 @@ const User = require('./user')
 const env = require('../../.env')
 
 const emailRegex = /\S+@\S+\.\S+/
-const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).(6,20))/
+const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
 
 const sendErrorsFromDB = ( res, dbErrors ) => {
       const errors = []
       _.forIn(dbErrors, error => errors.push(error.message))
-      return res.status(400).json(errors)
+      return res.status(400).json( { errors } )
 }
 
 const login = ( req, res, next ) => {
@@ -24,7 +24,7 @@ const login = ( req, res, next ) => {
             //verifica usuario e password usando o bcryot
             } else if( user && bcrypt.compareSync( password, user.password ) ) {
                   //gerando token
-                  const token = jwt.sign(user, env.authSecret, { expires: '1 day' })
+                  const token = jwt.sign(user, env.authSecret, { expiresIn: '1 day' })
                   //extrai propriedades de 'user'
                   const { name, email } = user
                   //retorna usuario mais o token gerado
@@ -44,11 +44,11 @@ const validateToken = ( req, res, next ) => {
       })
 }
 
-const sigup = ( req, res, next ) => {
+const signup = ( req, res, next ) => {
       const name = req.body.name || ''
       const email = req.body.email || ''
       const password = req.body.password || ''
-      const confirmPassword = req.body.confirmPassword || ''
+      const confirmPassword = req.body.confirm_password || ''
 
       //valida formato do email
       if( !email.match(emailRegex) ) {
@@ -88,4 +88,4 @@ const sigup = ( req, res, next ) => {
     
 }
 
-module.exports = { login, sigup, validateToken }
+module.exports = { login, signup, validateToken }

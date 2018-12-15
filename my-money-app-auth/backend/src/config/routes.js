@@ -36,7 +36,7 @@ server.use('/oapi', openAPI)
 
 const AuthService = require('../api/user/authService')
 openAPI.post('/login', AuthService.login)
-openAPI.post('/signup', AuthService.sigup)
+openAPI.post('/signup', AuthService.signup)
 openAPI.post('/validateToken', AuthService.validateToken)
       
       

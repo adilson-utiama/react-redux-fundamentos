@@ -10,7 +10,7 @@ module.exports = ( req, res, next ) => {
             next() //da continuidade para requisicao
       } else {
             //Pega o token no body ou no header ou query da requisicao
-            const token = req.body.token || req.query.token || req.headers['Authorization']
+            const token = req.body.token || req.query.token || req.headers['authorization']
 
             if( !token ) {
                   return res.status(403).send( { errors: ['No token provided'] } )

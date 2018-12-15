@@ -1,8 +1,8 @@
 const userKey = '_mymoney_user'
 const INITIAL_STATE = {
       //Utilizando localStorage (objeto global do browser para persistir dados simples)
-      //user: JSON.parse(localStorage.getItem(userKey)),
-      user: { name: 'teste', email: 'teste@com.br' },
+      user: JSON.parse(localStorage.getItem(userKey)),
+      //user: { name: 'teste', email: 'teste@com.br' },
       validToken: false
 }
 
