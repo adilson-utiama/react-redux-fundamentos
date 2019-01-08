@@ -9,7 +9,7 @@ import promise from 'redux-promise'
 import multi from 'redux-multi'
 import thunk from 'redux-thunk'
 
-import AuthOrApp from '../main/authOrApp'
+import AuthOrApp from './main/authOrApp'
 import reducers from './main/reducers'
 import * as serviceWorker from './serviceWorker';
 

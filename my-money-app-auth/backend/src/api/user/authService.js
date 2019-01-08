@@ -24,7 +24,7 @@ const login = ( req, res, next ) => {
             //verifica usuario e password usando o bcryot
             } else if( user && bcrypt.compareSync( password, user.password ) ) {
                   //gerando token
-                  const token = jwt.sign(user, env.authSecret, { expiresIn: '1 day' })
+                  const token = jwt.sign({ ...user }, env.authSecret, { expiresIn: '1 day' })
                   //extrai propriedades de 'user'
                   const { name, email } = user
                   //retorna usuario mais o token gerado
