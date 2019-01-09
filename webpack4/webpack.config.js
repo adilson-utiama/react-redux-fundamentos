@@ -1,12 +1,27 @@
+const modoDev = process.env.NODE_ENV !== 'production'
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin')
+
 module.exports = {
-      mode: 'development',
+      mode: modoDev ? 'development' : 'production',
       entry: './src/principal.js',
       output: {
             filename: 'index.js',
             path: __dirname + '/public'
+      },
+      optimization: {
+            minimizer: [
+                  new UglifyJSPlugin({
+                        cache: true,
+                        parallel: true
+                  }),
+                  new OptimizeCssAssetPlugin({
+
+                  })
+            ]
       },
       plugins: [
             new MiniCssExtractPlugin({
