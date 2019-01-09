@@ -4,7 +4,7 @@ import Pessoa from './pessoa'
 //carregando o modulo B
 import moduloA from '../modulos/moduloA'
 
-import './assets/css/estilo.css'
+import './assets' //ira procurar por index.js, onde importara os .css e .scss
 
 const atendente = new Pessoa()
 console.log(atendente.cumprimentar())
