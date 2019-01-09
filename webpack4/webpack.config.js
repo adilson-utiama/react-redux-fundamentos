@@ -12,6 +12,10 @@ module.exports = {
             filename: 'index.js',
             path: __dirname + '/public'
       },
+      devServer: {
+            contentBase: './public',
+            port: 9000
+      },
       optimization: {
             minimizer: [
                   new UglifyJSPlugin({
