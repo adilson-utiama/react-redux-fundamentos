@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 
-import Primeiro from './componentes/primeiro'
+import Primeiro from './componentes/Primeiro'
+import Saudacao from './componentes/Saudacao'
 
 ReactDOM.render(
-      <Primeiro />,
+      <Fragment>
+            <Primeiro />
+            <Saudacao nome="Adilson" />
+      </Fragment>,
       document.getElementById('root')
 )
