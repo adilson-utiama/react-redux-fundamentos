@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import Primeiro from './componentes/primeiro'
+
 ReactDOM.render(
-      <h1>React 16.4.0</h1>,
+      <Primeiro />,
       document.getElementById('root')
 )
