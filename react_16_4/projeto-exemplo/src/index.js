@@ -14,8 +14,17 @@ import Multi, { BoaNoite } from './componentes/MultiplosComponentes'
 
 import ComponenteClasse from './componentes/ComponenteClasse'
 
+import ComponentePai from './componentes/ComponentePai'
+import ComponenteFilho from './componentes/ComponenteFilho'
+
 ReactDOM.render(
       <Fragment>
+            <ComponentePai nome="Paulo" sobrenome="Silva">
+                  <ComponenteFilho nome="Pedro" />
+                  <ComponenteFilho nome="Jose" />
+                  <ComponenteFilho nome="Carla" />
+            </ComponentePai>
+
             <ComponenteClasse tipo="Bom Dia" nome="Wilson" />
 
             <Primeiro />
