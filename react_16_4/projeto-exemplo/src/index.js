@@ -12,8 +12,12 @@ import Saudacao from './componentes/Saudacao'
 //um componente exportado como 'default'
 import Multi, { BoaNoite } from './componentes/MultiplosComponentes'
 
+import ComponenteClasse from './componentes/ComponenteClasse'
+
 ReactDOM.render(
       <Fragment>
+            <ComponenteClasse tipo="Bom Dia" nome="Wilson" />
+
             <Primeiro />
             <Saudacao nome="Adilson" />
 
