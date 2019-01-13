@@ -5,13 +5,15 @@ import React from 'react'
 
 import Logo from '../components/template/Logo'
 import Nav from '../components/template/Nav'
-import Home from '../components/home/Home'
+//import Home from '../components/home/Home'
+import UserCrud from '../components/user/UserCrud'
 import Footer from '../components/template/Footer'
 
 export default props =>
       <div className="app">
             <Logo  />
             <Nav />
-            <Home />
+            {/* Testando UserCrud */}
+            <UserCrud />
             <Footer />
       </div>
